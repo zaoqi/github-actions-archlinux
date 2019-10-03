@@ -9,4 +9,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Extract Archlinux
       run: |
+        docker pull archlinux/base
         docker save archlinux/base | tar -xv -C /
+        docker rmi archlinux/base
