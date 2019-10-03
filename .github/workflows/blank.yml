@@ -9,9 +9,10 @@ jobs:
     - uses: actions/checkout@v1
     - name: Extract Archlinux
       run: |
-        wget -O /tmp/undocker.py https://github.com/larsks/undocker/raw/master/undocker.py
+        wget -O /tmp/undocker.py https://github.com/larsks/undocker/raw/c951f021e701b4ce61de03eb668a440e69646889/undocker.py
         mkdir -p /tmp/rootfs
         docker pull archlinux/base
         docker save archlinux/base | sudo python3 /tmp/undocker.py -o /tmp/rootfs archlinux/base
         docker rmi archlinux/base
-        ls -lh /tmp/rootfs
+        rm -fr /tmp/undocker.py
+        sudo sh -c 'mkdir -p /bin/ /sbin/ /usr/sbin/ /lib64/ /lib/ /usr/lib64/ && cp -r /bin/* /sbin/* /usr/sbin/* /usr/bin/ && cp -r /lib64/* /lib/* /usr/lib64/* /usr/lib/ && rm -fr /bin/ /sbin/ /usr/sbin/ /lib64/ /lib/ /usr/lib64/ && /tmp/rootfs/usr/bin/cp -r /tmp/rootfs/* /‘
