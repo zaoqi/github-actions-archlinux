@@ -19,4 +19,5 @@ jobs:
         cp -r /bin/* /sbin/* /usr/sbin/* /usr/bin/ ;
         cp -r /lib64/* /lib/* /usr/lib64/* /usr/lib/ ;
         rm -fr /bin/ /sbin/ /usr/sbin/ /lib64/ /lib/ /usr/lib64/ &&
-        /rootfs/usr/bin/cp -r /rootfs/* /'
+        /usr/bin/cp -r /rootfs/* /'
+        sudo pacman --force -Syu base
