@@ -10,5 +10,5 @@ jobs:
     - name: Extract Archlinux
       run: |
         docker pull archlinux/base
-        docker save archlinux/base | tar -xv -C /
+        docker save archlinux/base | sudo tar -xv -C /
         docker rmi archlinux/base
