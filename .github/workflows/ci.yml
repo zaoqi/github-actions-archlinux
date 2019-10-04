@@ -20,7 +20,7 @@ jobs:
         sudo systemctl stop docker
         sudo chroot /rootfs /bin/sh -c '
         cd /old.rootfs;
-        rm -fr sbin bin lib usr;
+        rm -fr sbin bin lib usr lib64 var/mail var/spool/mail;
         cd /old.rootfs/etc/;
         cp -Pfr passwd group shadow hosts resolv.conf hostname /etc/;
         pacman --noconfirm --force -Syu sudo;
