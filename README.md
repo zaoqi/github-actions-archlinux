@@ -1,5 +1,5 @@
 # github-actions-archlinux
-Install Archlinux on Github Actions!
+Install Archlinux on Github Actions.
 
 ## Usage
 
