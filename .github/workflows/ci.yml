@@ -23,7 +23,7 @@ jobs:
         cd /old.rootfs;
         rm -fr sbin bin lib usr;
         cd /old.rootfs/etc/;
-        cp -Pfr hosts resolv.conf hostname sudoers sudoers.d /etc/;
+        cp -Pfr passwd group shadow hosts resolv.conf hostname sudoers sudoers.d /etc/;
         cd /;
         cp -Pfr bin etc home lib lib64 mnt opt root run sbin srv usr var /old.rootfs;
         true
