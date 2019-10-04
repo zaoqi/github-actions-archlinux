@@ -17,3 +17,8 @@ jobs:
     - name: Install Archlinux
       run: curl -L https://github.com/zaoqi/github-actions-archlinux/raw/master/install.sh | sh
 ```
+
+## Image
+
+[Dockerfile](Dockerfile)
+[Docker Hub](https://hub.docker.com/r/zaoqi/github-actions-archlinux)
