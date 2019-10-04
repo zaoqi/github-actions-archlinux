@@ -23,7 +23,7 @@ jobs:
         rm -fr sbin bin lib usr lib64 var/mail var/spool/mail;
         cd /old.rootfs/etc/;
         cp -Pfr passwd group shadow hosts resolv.conf hostname /etc/;
-        echo 'nameserver 1.1.1.1' > /etc/resolv.conf;
+        echo nameserver 1.1.1.1 > /etc/resolv.conf;
         pacman --noconfirm --force -Syu sudo;
         cp -Pfr sudoers sudoers.d /etc/;
         cd /;
