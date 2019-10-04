@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v1
     - name: Extract Archlinux
@@ -15,4 +15,8 @@ jobs:
         docker save archlinux/base | sudo python3 /tmp/undocker.py -o /rootfs archlinux/base
         docker rmi archlinux/base
         rm -fr /tmp/undocker.py
-        ps aux
+        mkdir /rootfs/old.rootfs
+        sudo mount --bind / /rootfs/old.rootfs
+        sudo chroot /rootfs /bin/sh -c '
+        find /old.rootfs \( ! -path '/dev/*' -and ! -path '/proc/*' -and ! -path '/sys/*' -and ! -path '/selinux/*' -and ! -path "/roofs/*" \)
+        '
