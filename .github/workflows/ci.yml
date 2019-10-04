@@ -20,16 +20,14 @@ jobs:
         mkdir /rootfs/old.rootfs
         mount --bind / /rootfs/old.rootfs
         chroot /rootfs /bin/sh -c '
-        cd /old.rootfs;
-        rm -fr sbin bin lib usr lib64 var/mail var/spool/mail;
-        cp /old.rootfs/etc/* /etc/;
-        pacman --noconfirm --force -Syu sudo;
-        cp -Pfr sudoers sudoers.d /etc/;
-        cd /;
-        cp -Pfr bin etc home lib lib64 mnt opt root run sbin srv usr var /old.rootfs;
-        true
-        '
-        umount /rootfs/old.rootfs
-        rm -fr /rootfs/
+        cd /old.rootfs &&
+        rm -fr sbin bin lib usr lib64 var/mail var/spool/mail &&
+        cd /old.rootfs/etc/ &&
+        cp -Pfr passwd group shadow hosts resolv.conf hostname sudoers sudoers.d /etc/ &&
+        cd / &&
+        cp -Pfr bin etc home lib lib64 mnt opt root run sbin srv usr var /old.rootfs
+        ' &&
+        umount /rootfs/old.rootfs &&
+        rm -fr /rootfs/ &&
         pacman --noconfirm --force -Syu gzip pacman sed systemd base sudo docker git
         "
