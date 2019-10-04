@@ -15,9 +15,4 @@ jobs:
         docker save archlinux/base | sudo python3 /tmp/undocker.py -o /rootfs archlinux/base
         docker rmi archlinux/base
         rm -fr /tmp/undocker.py
-        sudo sh -c 'mkdir -p /bin/ /sbin/ /usr/sbin/ /lib64/ /lib/ /usr/lib64/ ;
-        cp -r /bin/* /sbin/* /usr/sbin/* /usr/bin/ ;
-        cp -r /lib64/* /lib/* /usr/lib64/* /usr/lib/ ;
-        rm -fr /bin/ /sbin/ /usr/sbin/ /lib64/ /lib/ /usr/lib64/ &&
-        /usr/bin/cp -r /rootfs/* /'
-        sudo pacman --force -Syu base
+        ps aux
