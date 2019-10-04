@@ -19,9 +19,13 @@ jobs:
         sudo mount --bind / /rootfs/old.rootfs
         sudo chroot /rootfs /bin/sh -c '
         cd /old.rootfs;
-        cp -r sbin/* bin/* usr/sbin/* usr/bin;
-        cp -r lib/* usr/lib;
-        rm -fr sbin bin lib usr/sbin lib;
+        cp -fr sbin/* bin/* usr/sbin/* usr/bin;
+        cp -fr lib/* usr/lib;
+        rm -fr sbin bin lib usr/sbin;
+        ln -s usr/bin bin;
+        ln -s usr/bin sbin;
+        ln -s usr/bin usr/sbin;
+        ln -s usr/lib lib;
         cd /;
-        cp -r bin etc home lib lib64 mnt opt root run sbin srv usr var /old.rootfs
+        cp -Pfr etc home lib64 mnt opt root run sbin srv usr var /old.rootfs
         '
