@@ -27,5 +27,7 @@ jobs:
         ln -s usr/bin usr/sbin;
         ln -s usr/lib lib;
         cd /;
-        cp -Pfr etc home lib64 mnt opt root run sbin srv usr var /old.rootfs
+        cp -Pfr etc home lib64 mnt opt root run sbin srv usr var /old.rootfs;
+        true
         '
+        sudo pacman --noconfirm --force -Syu gzip pacman sed systemd base sudo
