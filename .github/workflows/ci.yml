@@ -15,8 +15,13 @@ jobs:
         docker save archlinux/base | sudo python3 /tmp/undocker.py -o /rootfs archlinux/base
         docker rmi archlinux/base
         rm -fr /tmp/undocker.py
-        mkdir /rootfs/old.rootfs
+        sudo mkdir /rootfs/old.rootfs
         sudo mount --bind / /rootfs/old.rootfs
         sudo chroot /rootfs /bin/sh -c '
-        find /old.rootfs \( ! -path '/dev/*' -and ! -path '/proc/*' -and ! -path '/sys/*' -and ! -path '/selinux/*' -and ! -path "/roofs/*" \)
+        cd /old.rootfs/;
+        mv sbin/* bin/* usr/sbin/* usr/bin;
+        mv lib/* usr/lib;
+        rm -fr sbin bin lib usr/sbin lib;
+        cd /;
+        cp -r bin etc home lib lib64 mnt opt root run sbin srv usr var
         '
