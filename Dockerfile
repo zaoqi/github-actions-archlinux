@@ -16,7 +16,6 @@ curl \
 dbus \
 diffutils \
 dnsutils \
-eatmydata \
 efibootmgr \
 ethtool \
 fakeroot \
