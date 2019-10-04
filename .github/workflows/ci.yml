@@ -17,17 +17,13 @@ jobs:
         rm -fr /tmp/undocker.py
         sudo mkdir /rootfs/old.rootfs
         sudo mount --bind / /rootfs/old.rootfs
+        sudo systemctl stop docker
         sudo chroot /rootfs /bin/sh -c '
         cd /old.rootfs;
-        cp -Pfr sbin/* bin/* usr/sbin/* usr/bin;
-        cp -Pfr lib/* usr/lib;
-        rm -fr sbin bin lib usr/sbin;
-        ln -s usr/bin bin;
-        ln -s usr/bin sbin;
-        ln -s usr/bin usr/sbin;
-        ln -s usr/lib lib;
+        rm -fr sbin bin lib usr run var;
         cd /;
-        cp -Pfr etc home lib64 mnt opt root run sbin srv usr var /old.rootfs;
+        sudo pacman --noconfirm --force -Syu sudo
+        cp -Pfr bin etc home lib lib64 mnt opt root run sbin srv usr var /old.rootfs;
         true
         '
-        sudo pacman --noconfirm --force -Syu gzip pacman sed systemd base sudo
+        sudo pacman --noconfirm --force -Syu gzip pacman sed systemd base sudo docker
