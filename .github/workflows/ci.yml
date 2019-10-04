@@ -15,21 +15,21 @@ jobs:
         docker save archlinux/base | sudo python3 /tmp/undocker.py -o /rootfs archlinux/base
         docker rmi archlinux/base
         rm -fr /tmp/undocker.py
-        sudo systemctl stop docker
-        sudo mkdir /rootfs/old.rootfs
-        sudo mount --bind / /rootfs/old.rootfs
-        sudo chroot /rootfs /bin/sh -c '
+        sudo sh -c "
+        systemctl stop docker
+        mkdir /rootfs/old.rootfs
+        mount --bind / /rootfs/old.rootfs
+        chroot /rootfs /bin/sh -c '
         cd /old.rootfs;
         rm -fr sbin bin lib usr lib64 var/mail var/spool/mail;
-        cd /old.rootfs/etc/;
-        cp -Pfr passwd group shadow hosts resolv.conf hostname /etc/;
-        echo nameserver 1.1.1.1 > /etc/resolv.conf;
+        cp /old.rootfs/etc/* /etc/;
         pacman --noconfirm --force -Syu sudo;
         cp -Pfr sudoers sudoers.d /etc/;
         cd /;
         cp -Pfr bin etc home lib lib64 mnt opt root run sbin srv usr var /old.rootfs;
         true
         '
-        sudo umount /rootfs/old.rootfs
-        sudo rm -fr /rootfs/
-        sudo pacman --noconfirm --force -Syu gzip pacman sed systemd base sudo docker git
+        umount /rootfs/old.rootfs
+        rm -fr /rootfs/
+        pacman --noconfirm --force -Syu gzip pacman sed systemd base sudo docker git
+        "
