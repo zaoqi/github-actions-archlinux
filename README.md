@@ -20,5 +20,5 @@ jobs:
 
 ## Image
 
-[Dockerfile](Dockerfile)
-[Docker Hub](https://hub.docker.com/r/zaoqi/github-actions-archlinux)
+* [Dockerfile](Dockerfile)
+* [Docker Hub](https://hub.docker.com/r/zaoqi/github-actions-archlinux)
