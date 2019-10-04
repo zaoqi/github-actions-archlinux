@@ -94,7 +94,6 @@ shellcheck \
 net-snmp \
 subversion \
 sudo \
-telnet \
 time \
 tmux \
 tzdata \
