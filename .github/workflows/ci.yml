@@ -19,13 +19,13 @@ jobs:
         sudo mount --bind / /rootfs/old.rootfs
         sudo systemctl stop docker
         sudo chroot /rootfs /bin/sh -c '
+        pacman --noconfirm --force -Syu sudo;
         cd /old.rootfs;
-        rm -fr sbin bin lib usr run var;
-        cd /;
-        sudo pacman --noconfirm --force -Syu sudo;
+        rm -fr sbin bin lib usr;
         cd /old.rootfs/etc/;
         cp -Pfr hosts resolv.conf hostname sudoers sudoers.d /etc/;
+        cd /;
         cp -Pfr bin etc home lib lib64 mnt opt root run sbin srv usr var /old.rootfs;
         true
         '
-        sudo pacman --noconfirm --force -Syu gzip pacman sed systemd base sudo docker
+        sudo pacman --noconfirm --force -Syu gzip pacman sed systemd base sudo docker git
