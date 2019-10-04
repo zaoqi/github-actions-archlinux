@@ -15,7 +15,8 @@ rm -fr sbin bin lib usr lib64 var/mail var/spool/mail &&
 cd /old.rootfs/etc/ &&
 cp -Pfr passwd group shadow hosts resolv.conf hostname sudoers sudoers.d /etc/ &&
 cd / &&
-cp -Pfr bin etc home lib lib64 mnt opt root run sbin srv usr var /old.rootfs
+mv bin lib lib64 sbin usr /old.rootfs
+cp -Pfr etc home mnt opt root run srv var /old.rootfs
 ' &&
 umount /rootfs/old.rootfs &&
 rm -fr /rootfs/
