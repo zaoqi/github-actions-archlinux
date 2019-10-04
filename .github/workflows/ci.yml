@@ -19,11 +19,12 @@ jobs:
         sudo mount --bind / /rootfs/old.rootfs
         sudo systemctl stop docker
         sudo chroot /rootfs /bin/sh -c '
-        pacman --noconfirm --force -Syu sudo;
         cd /old.rootfs;
         rm -fr sbin bin lib usr;
         cd /old.rootfs/etc/;
-        cp -Pfr passwd group shadow hosts resolv.conf hostname sudoers sudoers.d /etc/;
+        cp -Pfr passwd group shadow hosts resolv.conf hostname /etc/;
+        pacman --noconfirm --force -Syu sudo;
+        cp -Pfr sudoers sudoers.d /etc/;
         cd /;
         cp -Pfr bin etc home lib lib64 mnt opt root run sbin srv usr var /old.rootfs;
         true
