@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 wget -O /tmp/undocker.py https://github.com/larsks/undocker/raw/c951f021e701b4ce61de03eb668a440e69646889/undocker.py
 sudo mkdir -p /rootfs
 docker pull zaoqi/github-actions-archlinux
