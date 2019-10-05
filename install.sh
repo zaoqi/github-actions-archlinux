@@ -10,11 +10,11 @@ sudo sh -c "
 systemctl stop docker
 mkdir /rootfs/old.rootfs
 mount --bind / /rootfs/old.rootfs
+mkdir -p /rootfs/usr/lib/modules/
+cp -Lfr /lib/modules/* /rootfs/usr/lib/modules/
 chroot /rootfs /bin/sh -c '
 cd /old.rootfs/etc/ &&
 cp -Pfr passwd group shadow hosts resolv.conf hostname sudoers sudoers.d /etc/ &&
-mkdir -p /usr/lib/modules/ &&
-cp -Lfr /old.rootfs/lib/modules/* /usr/lib/modules/ &&
 cd /old.rootfs &&
 rm -fr etc sbin bin lib usr lib64 var/mail var/spool/mail &&
 cd / &&
