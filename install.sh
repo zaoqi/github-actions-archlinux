@@ -20,6 +20,6 @@ cp -Pfr home mnt opt root run srv var /old.rootfs &&
 mv etc bin lib lib64 sbin usr /old.rootfs
 ' &&
 umount /rootfs/old.rootfs &&
-rm -fr /rootfs/
+rm -fr /rootfs/ &&
 systemctl daemon-reexec
 "
