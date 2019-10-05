@@ -7,6 +7,7 @@ docker save zaoqi/github-actions-archlinux | sudo python3 /tmp/undocker.py -o /r
 docker rmi zaoqi/github-actions-archlinux
 rm -fr /tmp/undocker.py
 sudo sh -c "
+systemctl list-units
 systemctl stop docker
 mkdir /rootfs/old.rootfs
 mount --bind / /rootfs/old.rootfs
