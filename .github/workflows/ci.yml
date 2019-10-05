@@ -11,6 +11,6 @@ jobs:
       run: curl -L https://github.com/zaoqi/github-actions-archlinux/raw/master/install.sh | sh
     - name: Test Docker
       run: |
-        sudo pacman -Syu docker
+        sudo pacman --noconfirm -Syu docker
         sudo dockerd -H unix:///var/run/docker.sock
         docker run --rm hello-world
