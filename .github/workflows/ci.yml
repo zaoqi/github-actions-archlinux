@@ -12,5 +12,5 @@ jobs:
     - name: Test Docker
       run: |
         sudo pacman --noconfirm -Syu docker
-        sudo dockerd -H unix:///var/run/docker.sock
+        sudo systemctl start docker
         docker run --rm hello-world
