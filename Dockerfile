@@ -20,4 +20,4 @@ diffutils \
 coreutils \
 procps-ng \
 util-linux \
-&& yes | pacman -Scc --noconfirm
+&& yes | pacman -Scc --noconfirm && rm -fr /var/lib/pacman/sync/*
