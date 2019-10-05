@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v1
+    - name: TestA
+      run: |
+        ls /lib/modules/
     - name: Install Archlinux
       run: curl -L https://github.com/zaoqi/github-actions-archlinux/raw/master/install.sh | sh
     - name: Test Docker
