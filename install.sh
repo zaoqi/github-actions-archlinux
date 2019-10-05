@@ -11,10 +11,10 @@ systemctl stop docker
 mkdir /rootfs/old.rootfs
 mount --bind / /rootfs/old.rootfs
 chroot /rootfs /bin/sh -c '
-cd /old.rootfs &&
-rm -fr etc sbin bin lib usr lib64 var/mail var/spool/mail &&
 cd /old.rootfs/etc/ &&
 cp -Pfr passwd group shadow hosts resolv.conf hostname sudoers sudoers.d /etc/ &&
+cd /old.rootfs &&
+rm -fr etc sbin bin lib usr lib64 var/mail var/spool/mail &&
 cd / &&
 cp -Pfr home mnt opt root run srv var /old.rootfs &&
 mv etc bin lib lib64 sbin usr /old.rootfs
