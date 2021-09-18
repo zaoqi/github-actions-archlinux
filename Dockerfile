@@ -1,4 +1,4 @@
-FROM archlinux/base
+FROM archlinux:base-devel
 RUN pacman -Syu --noconfirm \
 sed \
 git \
